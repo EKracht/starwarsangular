@@ -32,9 +32,9 @@ var myapp = angular.module('myapp', ["ui.router"])
       this.savePlanets = function(res){
         planets = res.map(planet => {
           planet.residents = planet.residents.map(resident => {
-              var resident = { url: resident };
-              resident.id = resident.url.match(/\d+/)[0];
-              return resident;
+            var resident = { url: resident };
+            resident.id = resident.url.match(/\d+/)[0];
+            return resident;
           });
           return planet;
         });
@@ -50,8 +50,8 @@ var myapp = angular.module('myapp', ["ui.router"])
       if (planetsSvc.getPlanets().length === 0) {
         $http.get("http://swapi.co/api/planets/?format=json")
         .then(res => {
-            planetsSvc.savePlanets(res.data.results);
-            $scope.planets = planetsSvc.getPlanets();
+          planetsSvc.savePlanets(res.data.results);
+          $scope.planets = planetsSvc.getPlanets();
         }).catch(error => console.error(error.status));
       } else {
         $scope.planets = planetsSvc.getPlanets();
@@ -62,13 +62,13 @@ var myapp = angular.module('myapp', ["ui.router"])
       $urlRouterProvider.otherwise("/planets")
       $stateProvider
         .state('planets', {
-            url: "/planets",
-            templateUrl: "planets.html",
-            controller: "PlanetCtrl as p"
+          url: "/planets",
+          templateUrl: "planets.html",
+          controller: "PlanetCtrl as p"
         })
         .state('resident', {
-            url: "/resident/:id",
-            templateUrl: "resident.html",
-            controller: "ResidentCtrl as r"
+          url: "/resident/:id",
+          templateUrl: "resident.html",
+          controller: "ResidentCtrl as r"
         })
     })
