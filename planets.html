@@ -1,0 +1,17 @@
+<div>
+  Planets:
+</div>
+
+<div ng-hide="planets">
+  Planets Loading...
+</div>
+
+<ol>
+  <li ng-repeat="planet in planets">{{planet.name}} -- {{planet.population}}
+    <ul>
+      <li ng-repeat="resident in planet.residents">
+        <a ui-sref="resident({id: resident.id})"> {{ knownResidents[resident.id].name || "Resident " + resident.id }}</a>
+      </li>
+    </ul>
+  </li>
+</ol>
