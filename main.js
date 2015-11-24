@@ -1,13 +1,13 @@
 'use strict';
 
-var myapp = angular.module('myapp', ["ui.router"])
+var myapp = angular.module('myapp', ["ui.router"]);
     
     myapp.service("residentSvc", function(){
       this.residents = {};
       var resident = {};
       this.saveResident = function(theResident, id){
         resident[id] = theResident;
-        this.residents[id] = theResident;4
+        this.residents[id] = theResident;
       }
       this.getResident = function(id){
         return resident[id];
